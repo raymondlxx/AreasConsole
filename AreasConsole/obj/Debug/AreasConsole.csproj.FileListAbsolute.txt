@@ -1,0 +1,9 @@
+D:\leo\works\AreasConsole\AreasConsole\bin\Debug\AreasConsole.exe.config
+D:\leo\works\AreasConsole\AreasConsole\bin\Debug\AreasConsole.exe
+D:\leo\works\AreasConsole\AreasConsole\bin\Debug\AreasConsole.pdb
+D:\leo\works\AreasConsole\AreasConsole\obj\Debug\AreasConsole.csprojResolveAssemblyReference.cache
+D:\leo\works\AreasConsole\AreasConsole\obj\Debug\AreasConsole.exe
+D:\leo\works\AreasConsole\AreasConsole\obj\Debug\AreasConsole.pdb
+D:\leo\works\AreasConsole\AreasConsole\bin\Debug\data\us_cities_states_counties.csv
+D:\leo\works\AreasConsole\AreasConsole\bin\Debug\Newtonsoft.Json.dll
+D:\leo\works\AreasConsole\AreasConsole\bin\Debug\Newtonsoft.Json.xml
