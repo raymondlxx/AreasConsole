@@ -3,16 +3,14 @@ using AreasConsole.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Net;
-using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AreasConsole.Services
 {
-    public class CiBaTranslate : AbstractTranslate, ITranslate
+    public class BaiduTranslate : AbstractTranslate, ITranslate
     {
         public override string translate(string words)
         {
@@ -23,7 +21,7 @@ namespace AreasConsole.Services
                 request.Method = "POST";
                 request.ContentType = "application/json;charset=UTF-8";
                 response = (HttpWebResponse)request.GetResponse();
-                
+
                 var responseString = getResponseString(response);
 
                 if (string.IsNullOrEmpty(responseString))
@@ -31,15 +29,9 @@ namespace AreasConsole.Services
                     return string.Empty;
                 }
 
-                var translation = JsonConvert.DeserializeObject<TranslateResponse>(responseString);
+                var translation = JsonConvert.DeserializeObject<BaiduTranslateResponse>(responseString);
 
-                if (!String.IsNullOrEmpty(translation.content.s_out))
-                {
-                    return JsonConvert.SerializeObject(translation?.content?.s_out);
-                }
-
-                return JsonConvert.SerializeObject(translation?.content?.word_mean);
-
+                return translation.trans_result.data.FirstOrDefault().dst;
             }
             catch (WebException xe)
             {
@@ -49,10 +41,16 @@ namespace AreasConsole.Services
             }
         }
 
-
+        public override string Url
+        {
+            get
+            {
+                return "http://fanyi.baidu.com/v2transapi?from=en&to=zh&transtype=translang&simple_means_flag=3&query=";
+            }
+        }
         public override string GetURL(string keyword)
         {
-            return "http://fy.iciba.com/ajax.php?a=fy&f=en&t=zh&w=" + keyword;
+            return this.Url + keyword;
         }
     }
 }

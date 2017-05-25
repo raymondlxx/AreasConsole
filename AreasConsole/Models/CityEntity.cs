@@ -23,6 +23,8 @@ namespace AreasConsole
         public string CountyCN { get; set; }
         public string CityAliasCN { get; set; }
 
+        public string lineTranslationCN { get; set; }
+
 
     }
 }
